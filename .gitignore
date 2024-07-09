@@ -1,0 +1,10 @@
+# Ignorar um arquivo específico .txt
+playwright-log.txt
+
+# Diretórios
+browser
+
+# Ignorar todos os arquivos .png
+*.png
+
+# * Qualquer Coisa

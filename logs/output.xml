@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20240709 14:45:20.930" rpa="false" schemaversion="4">
+<suite id="s1" name="TestsLogin" source="H:\Automação\Ecommerce-RobotFramework\tests\TestsLogin.robot">
+<test id="s1-t1" name="Caso de teste 1 - Deve logar com sucesso" line="13">
+<kw name="Abrir navegador" library="util" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=add_experimental_option("excludeSwitches", ["enable-logging"])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240709 14:45:25.578" level="INFO">Opening browser 'chrome' to base url 'http://localhost/e-commerce'.</msg>
+<status status="PASS" starttime="20240709 14:45:25.572" endtime="20240709 14:45:37.449"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240709 14:45:37.450" endtime="20240709 14:45:38.071"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:25.569" endtime="20240709 14:45:38.072"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Entrar</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:38.131" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:45:38.129" endtime="20240709 14:45:38.832"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:38.837" level="INFO">Clicking element 'xpath=//a[normalize-space()="Entrar"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:38.833" endtime="20240709 14:45:40.010"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:38.126" endtime="20240709 14:45:40.010"/>
+</kw>
+<kw name="Submeter o formulário de login" library="PageLogin">
+<arg>cenario1</arg>
+<kw name="Get Fake Login" library="Login">
+<var>${login}</var>
+<arg>${nomeDoCenario}</arg>
+<msg timestamp="20240709 14:45:40.070" level="INFO">${login} = {'email': 'hulgo@teste.com.br', 'senha': 'pwd123'}</msg>
+<status status="PASS" starttime="20240709 14:45:40.070" endtime="20240709 14:45:40.071"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${login}[email]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:40.075" level="INFO">Typing text 'hulgo@teste.com.br' into text field 'css=input[name="email"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:40.072" endtime="20240709 14:45:40.743"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${login}[senha]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:40.745" level="INFO">Typing text 'pwd123' into text field 'css=input[name="senha"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:40.744" endtime="20240709 14:45:41.146"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:41.151" level="INFO">Clicking element 'css=button[class="button"] i'.</msg>
+<status status="PASS" starttime="20240709 14:45:41.147" endtime="20240709 14:45:42.005"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:40.067" endtime="20240709 14:45:42.006"/>
+</kw>
+<kw name="Fechar navegador" library="util" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240709 14:45:42.702" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-16.png"&gt;&lt;img src="selenium-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240709 14:45:42.075" endtime="20240709 14:45:42.702"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240709 14:45:42.703" endtime="20240709 14:45:46.742"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:42.071" endtime="20240709 14:45:46.742"/>
+</kw>
+<doc>Esse teste acessa a opção MINHA CONTA e realiza login com sucesso</doc>
+<tag>login_sucesso</tag>
+<status status="PASS" starttime="20240709 14:45:25.564" endtime="20240709 14:45:46.747"/>
+</test>
+<test id="s1-t2" name="Caso de teste 2 - Não deve logar com senha incorreta" line="20">
+<kw name="Abrir navegador" library="util" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=add_experimental_option("excludeSwitches", ["enable-logging"])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240709 14:45:46.770" level="INFO">Opening browser 'chrome' to base url 'http://localhost/e-commerce'.</msg>
+<status status="PASS" starttime="20240709 14:45:46.764" endtime="20240709 14:45:54.830"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240709 14:45:54.831" endtime="20240709 14:45:55.396"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:46.762" endtime="20240709 14:45:55.397"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Entrar</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:55.464" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:45:55.461" endtime="20240709 14:45:55.914"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:55.916" level="INFO">Clicking element 'xpath=//a[normalize-space()="Entrar"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:55.914" endtime="20240709 14:45:56.782"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:55.458" endtime="20240709 14:45:56.782"/>
+</kw>
+<kw name="Submeter o formulário de login" library="PageLogin">
+<arg>cenario2</arg>
+<kw name="Get Fake Login" library="Login">
+<var>${login}</var>
+<arg>${nomeDoCenario}</arg>
+<msg timestamp="20240709 14:45:56.838" level="INFO">${login} = {'email': 'hulgo@teste.com.br', 'senha': 'pwd12345'}</msg>
+<status status="PASS" starttime="20240709 14:45:56.837" endtime="20240709 14:45:56.838"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${login}[email]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:56.841" level="INFO">Typing text 'hulgo@teste.com.br' into text field 'css=input[name="email"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:56.839" endtime="20240709 14:45:57.519"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${login}[senha]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:57.524" level="INFO">Typing text 'pwd12345' into text field 'css=input[name="senha"]'.</msg>
+<status status="PASS" starttime="20240709 14:45:57.521" endtime="20240709 14:45:57.983"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:45:57.985" level="INFO">Clicking element 'css=button[class="button"] i'.</msg>
+<status status="PASS" starttime="20240709 14:45:57.984" endtime="20240709 14:45:58.494"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:56.836" endtime="20240709 14:45:58.495"/>
+</kw>
+<kw name="Toast Message Should Be" library="PageLogin">
+<arg>E-mail e/ou senha incorretos.</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${locator}</var>
+<arg>css=small[class="message"] &gt;&gt; text=${expected_message}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240709 14:45:58.542" level="INFO">${locator} = css=small[class="message"] &gt;&gt; text=E-mail e/ou senha incorretos.</msg>
+<status status="PASS" starttime="20240709 14:45:58.541" endtime="20240709 14:45:58.542"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:58.540" endtime="20240709 14:45:58.542"/>
+</kw>
+<kw name="Fechar navegador" library="util" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240709 14:45:58.905" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-17.png"&gt;&lt;img src="selenium-screenshot-17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240709 14:45:58.551" endtime="20240709 14:45:58.905"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240709 14:45:58.905" endtime="20240709 14:46:03.726"/>
+</kw>
+<status status="PASS" starttime="20240709 14:45:58.550" endtime="20240709 14:46:03.728"/>
+</kw>
+<doc>Esse teste acessa a opção MINHA CONTA, tenta realizar
+login com senha incorreta e valida a mensagem de erro</doc>
+<tag>senha_incorreta</tag>
+<status status="PASS" starttime="20240709 14:45:46.756" endtime="20240709 14:46:03.736"/>
+</test>
+<test id="s1-t3" name="Caso de teste 3 - Não deve logar com usuario incorreto" line="29">
+<kw name="Abrir navegador" library="util" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=add_experimental_option("excludeSwitches", ["enable-logging"])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240709 14:46:03.761" level="INFO">Opening browser 'chrome' to base url 'http://localhost/e-commerce'.</msg>
+<status status="PASS" starttime="20240709 14:46:03.759" endtime="20240709 14:46:11.209"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240709 14:46:11.209" endtime="20240709 14:46:11.889"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:03.756" endtime="20240709 14:46:11.889"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Entrar</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:12.011" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:46:11.999" endtime="20240709 14:46:12.502"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:12.505" level="INFO">Clicking element 'xpath=//a[normalize-space()="Entrar"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:12.503" endtime="20240709 14:46:13.232"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:11.996" endtime="20240709 14:46:13.232"/>
+</kw>
+<kw name="Submeter o formulário de login" library="PageLogin">
+<arg>cenario3</arg>
+<kw name="Get Fake Login" library="Login">
+<var>${login}</var>
+<arg>${nomeDoCenario}</arg>
+<msg timestamp="20240709 14:46:13.287" level="INFO">${login} = {'email': 'hulgo123@teste.com.br', 'senha': 'pwd123'}</msg>
+<status status="PASS" starttime="20240709 14:46:13.286" endtime="20240709 14:46:13.287"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${login}[email]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:13.290" level="INFO">Typing text 'hulgo123@teste.com.br' into text field 'css=input[name="email"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:13.287" endtime="20240709 14:46:14.172"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${login}[senha]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:14.174" level="INFO">Typing text 'pwd123' into text field 'css=input[name="senha"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:14.172" endtime="20240709 14:46:14.543"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:14.544" level="INFO">Clicking element 'css=button[class="button"] i'.</msg>
+<status status="PASS" starttime="20240709 14:46:14.543" endtime="20240709 14:46:15.079"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:13.284" endtime="20240709 14:46:15.080"/>
+</kw>
+<kw name="Toast Message Should Be" library="PageLogin">
+<arg>E-mail e/ou senha incorretos.</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${locator}</var>
+<arg>css=small[class="message"] &gt;&gt; text=${expected_message}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240709 14:46:15.099" level="INFO">${locator} = css=small[class="message"] &gt;&gt; text=E-mail e/ou senha incorretos.</msg>
+<status status="PASS" starttime="20240709 14:46:15.098" endtime="20240709 14:46:15.099"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:15.096" endtime="20240709 14:46:15.100"/>
+</kw>
+<kw name="Fechar navegador" library="util" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240709 14:46:15.469" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-18.png"&gt;&lt;img src="selenium-screenshot-18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240709 14:46:15.105" endtime="20240709 14:46:15.469"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240709 14:46:15.470" endtime="20240709 14:46:19.473"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:15.105" endtime="20240709 14:46:19.473"/>
+</kw>
+<doc>Esse teste acessa a opção MINHA CONTA, tenta realizar
+login com usuario incorreto e valida a mensagem de erro</doc>
+<tag>usuario_incorreto</tag>
+<status status="PASS" starttime="20240709 14:46:03.743" endtime="20240709 14:46:19.498"/>
+</test>
+<test id="s1-t4" name="Caso de teste 4 - Deve logar com usuário Administrador" line="38">
+<kw name="Abrir navegador" library="util" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=add_experimental_option("excludeSwitches", ["enable-logging"])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240709 14:46:19.532" level="INFO">Opening browser 'chrome' to base url 'http://localhost/e-commerce'.</msg>
+<status status="PASS" starttime="20240709 14:46:19.527" endtime="20240709 14:46:27.979"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240709 14:46:27.979" endtime="20240709 14:46:28.522"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:19.524" endtime="20240709 14:46:28.524"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Admin</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:28.555" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:46:28.553" endtime="20240709 14:46:29.023"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:29.026" level="INFO">Clicking element 'xpath=//a[normalize-space()="Admin"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:29.024" endtime="20240709 14:46:30.284"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:28.552" endtime="20240709 14:46:30.284"/>
+</kw>
+<kw name="Submeter o formulário de login" library="PageLogin">
+<arg>cenario4</arg>
+<kw name="Get Fake Login" library="Login">
+<var>${login}</var>
+<arg>${nomeDoCenario}</arg>
+<msg timestamp="20240709 14:46:30.316" level="INFO">${login} = {'email': 'admin@teste.com.br', 'senha': 'admin'}</msg>
+<status status="PASS" starttime="20240709 14:46:30.315" endtime="20240709 14:46:30.317"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${login}[email]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:30.323" level="INFO">Typing text 'admin@teste.com.br' into text field 'css=input[name="email"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:30.318" endtime="20240709 14:46:31.147"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${login}[senha]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:31.152" level="INFO">Typing text 'admin' into text field 'css=input[name="senha"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:31.148" endtime="20240709 14:46:31.634"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:31.636" level="INFO">Clicking element 'css=button[class="button"] i'.</msg>
+<status status="PASS" starttime="20240709 14:46:31.634" endtime="20240709 14:46:32.451"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:30.311" endtime="20240709 14:46:32.451"/>
+</kw>
+<kw name="Fechar navegador" library="util" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240709 14:46:32.909" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-19.png"&gt;&lt;img src="selenium-screenshot-19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240709 14:46:32.481" endtime="20240709 14:46:32.909"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240709 14:46:32.909" endtime="20240709 14:46:37.789"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:32.479" endtime="20240709 14:46:37.790"/>
+</kw>
+<doc>Esse teste acessa a opção MINHA CONTA e realiza login com usuario adm</doc>
+<tag>login_adm</tag>
+<status status="PASS" starttime="20240709 14:46:19.509" endtime="20240709 14:46:37.799"/>
+</test>
+<test id="s1-t5" name="Caso de teste 5 -Fazer logout do sistema" line="45">
+<kw name="Abrir navegador" library="util" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=add_experimental_option("excludeSwitches", ["enable-logging"])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240709 14:46:37.838" level="INFO">Opening browser 'chrome' to base url 'http://localhost/e-commerce'.</msg>
+<status status="PASS" starttime="20240709 14:46:37.836" endtime="20240709 14:46:45.734"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240709 14:46:45.735" endtime="20240709 14:46:46.555"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:37.835" endtime="20240709 14:46:46.556"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Entrar</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:46.575" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:46:46.573" endtime="20240709 14:46:47.291"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:47.298" level="INFO">Clicking element 'xpath=//a[normalize-space()="Entrar"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:47.294" endtime="20240709 14:46:48.139"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:46.573" endtime="20240709 14:46:48.140"/>
+</kw>
+<kw name="Submeter o formulário de login" library="PageLogin">
+<arg>cenario1</arg>
+<kw name="Get Fake Login" library="Login">
+<var>${login}</var>
+<arg>${nomeDoCenario}</arg>
+<msg timestamp="20240709 14:46:48.174" level="INFO">${login} = {'email': 'hulgo@teste.com.br', 'senha': 'pwd123'}</msg>
+<status status="PASS" starttime="20240709 14:46:48.174" endtime="20240709 14:46:48.174"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${login}[email]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:48.176" level="INFO">Typing text 'hulgo@teste.com.br' into text field 'css=input[name="email"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:48.175" endtime="20240709 14:46:49.042"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${login}[senha]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:49.046" level="INFO">Typing text 'pwd123' into text field 'css=input[name="senha"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:49.043" endtime="20240709 14:46:49.492"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:49.494" level="INFO">Clicking element 'css=button[class="button"] i'.</msg>
+<status status="PASS" starttime="20240709 14:46:49.493" endtime="20240709 14:46:50.579"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:48.173" endtime="20240709 14:46:50.580"/>
+</kw>
+<kw name="Acessar menu" library="util">
+<arg>Sair</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${MENU_CONTA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:50.610" level="INFO">Clicking element 'css=div[class="text"] a'.</msg>
+<status status="PASS" starttime="20240709 14:46:50.607" endtime="20240709 14:46:50.856"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[normalize-space()="${menu}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:50.861" level="INFO">Clicking element 'xpath=//a[normalize-space()="Sair"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:50.856" endtime="20240709 14:46:51.383"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:50.606" endtime="20240709 14:46:51.383"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Você tem certeza que deseja sair?</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20240709 14:46:51.687" level="INFO">Current page contains text 'Você tem certeza que deseja sair?'.</msg>
+<status status="PASS" starttime="20240709 14:46:51.455" endtime="20240709 14:46:51.688"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGOUT_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240709 14:46:51.730" level="INFO">Clicking button 'css=button[type="submit"]'.</msg>
+<status status="PASS" starttime="20240709 14:46:51.728" endtime="20240709 14:46:52.577"/>
+</kw>
+<kw name="Fechar navegador" library="util" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240709 14:46:53.139" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-20.png"&gt;&lt;img src="selenium-screenshot-20.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240709 14:46:52.614" endtime="20240709 14:46:53.140"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240709 14:46:53.141" endtime="20240709 14:46:59.953"/>
+</kw>
+<status status="PASS" starttime="20240709 14:46:52.613" endtime="20240709 14:46:59.954"/>
+</kw>
+<doc>Esse teste acessa a opção MINHA CONTA, realiza login com sucesso
+e depois faz logout do sistema</doc>
+<tag>login_sair</tag>
+<status status="PASS" starttime="20240709 14:46:37.833" endtime="20240709 14:46:59.960"/>
+</test>
+<doc>Essa suite valida a autenticação do usuário no site Ecommerce</doc>
+<status status="PASS" starttime="20240709 14:45:20.948" endtime="20240709 14:46:59.979"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">login_adm</stat>
+<stat pass="1" fail="0" skip="0">login_sair</stat>
+<stat pass="1" fail="0" skip="0">login_sucesso</stat>
+<stat pass="1" fail="0" skip="0">senha_incorreta</stat>
+<stat pass="1" fail="0" skip="0">usuario_incorreto</stat>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="TestsLogin">TestsLogin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
