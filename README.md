@@ -1,8 +1,12 @@
-<img align="right" width="300" src="https://www.testmo.com/img/images/thirdparty/logos/robot.png?w=400&s=b93bcc0cdd6b1d68680f9ffa510d62ea"/>
 
 
+# Automação do site E-Commerce com Robot!👋 <img align="right" width="250" src="https://www.testmo.com/img/images/thirdparty/logos/robot.png?w=400&s=b93bcc0cdd6b1d68680f9ffa510d62ea"/>
 
-# Automação do site E-Commerce com Robot!👋
+
+# Sistema
+
+![image](https://github.com/hulgo-ferreira/E-Commerce/assets/81827985/f231544f-7390-4b75-b35e-6f7a9cf5efa3)
+
 
 ## Preparação do ambiente
 
