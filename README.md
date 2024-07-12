@@ -1,12 +1,9 @@
 
 
-# Automação funcional do site com Robot Framework!👋   <img align="right" width="230" src="https://www.testmo.com/img/images/thirdparty/logos/robot.png?w=400&s=b93bcc0cdd6b1d68680f9ffa510d62ea"/>
+# Automação funcional com Robot Framework!👋   <img align="right" width="230" src="https://www.testmo.com/img/images/thirdparty/logos/robot.png?w=400&s=b93bcc0cdd6b1d68680f9ffa510d62ea"/>
 
 
 
-# Sistema
-
-![image](https://github.com/hulgo-ferreira/E-Commerce/assets/81827985/f231544f-7390-4b75-b35e-6f7a9cf5efa3)
 
 ## Preparação do ambiente
 
