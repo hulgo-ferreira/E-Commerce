@@ -1,0 +1,90 @@
+name: Run Robot Framework Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306: 3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    # Passo 1: Clonagem do projeto para a máquina virtual do github
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    # Passo 2: Configurar o PHP e o Apache para rodar o back-end
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0.12'
+        
+    - name: Install Composer Dependencies
+      run: composer install --no-progress --no-suggest
+      
+    - name: Start Apache Server
+      run: sudo service apache2 start 
+      
+    # Passo 3: Configurar o banco de dados a partir do dump SQL
+    - name: Create Database
+      run: mysql -u root -e "CREATE DATABASE database;"
+      
+    - name: Import Database Dump 
+      run: mysql -u root database < banco_de_dados.sql
+      
+    # Passo 4: Build e serve o front-end
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with: 
+        node-version: '16'
+        
+    - name: Install Front-end Dependencies
+      run: npm install
+      
+    - name: Build Front-end
+      run: npm run build 
+      
+    - name: Start Front-end Server
+      run: npm start &
+      
+    # Passo 5: Aguardar serviços (opcional, pode ser útil)
+    - name: Wait for services to be ready
+        run: ./wait-for-it.sh localhost:8080 --timeout=30 --strict -- echo "Services are up"
+        
+    # Passo 6: Rodar os testes automatizados com Robot Framework
+      - name: Run Robot Framework Tests
+        run: robot --outputdir results tests/
+
+    - name: Configuração do Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.  # Especifique a versão do Python que você usa
+
+    # Passo 8: Instalação das dependencias do projeto
+    - name: Instalação das dependencias do Projeto
+      run: |
+        python -m pip install --upgrade pip   
+        pip install robotframework        
+
+    # Passo 9: Rodar os testes automatizados com Robot Framework
+    - name: Run Robot Framework Tests
+      run: robot --outpudir results tests/
+        
+    # Passo 10: Upload dos resultados dos testes para visualização
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()      # caso o teste falhe, será salvo o resultado
+      with:
+        name: resultado-testes
+        path: ./logs
