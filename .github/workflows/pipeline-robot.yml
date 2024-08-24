@@ -57,10 +57,6 @@ jobs:
       
     - name: Start Front-end Server
       run: npm start &
-      
-    # # Passo 5: Aguardar serviços (opcional, pode ser útil)
-    # - name: Wait for services to be ready
-    #   run: ./wait-for-it.sh localhost:8080 --timeout=30 --strict -- echo "Services are up"
         
     # Passo 6: Rodar os testes automatizados com Robot Framework
     - name: Run Robot Framework Tests
