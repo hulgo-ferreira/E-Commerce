@@ -60,11 +60,11 @@ jobs:
       
     # Passo 5: Aguardar serviços (opcional, pode ser útil)
     - name: Wait for services to be ready
-        run: ./wait-for-it.sh localhost:8080 --timeout=30 --strict -- echo "Services are up"
+      run: ./wait-for-it.sh localhost:8080 --timeout=30 --strict -- echo "Services are up"
         
     # Passo 6: Rodar os testes automatizados com Robot Framework
-      - name: Run Robot Framework Tests
-        run: robot --outputdir results tests/
+    - name: Run Robot Framework Tests
+      run: robot --outputdir results tests/
 
     - name: Configuração do Python
       uses: actions/setup-python@v2
